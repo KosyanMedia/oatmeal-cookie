@@ -3,26 +3,12 @@ pipeline {
     kubernetes {
       label "oatmeal-cookie"
       defaultContainer 'node'
-      yaml """
-apiVersion: v1
-kind: Pod
-spec:
-  volumes:
-  containers:
-  - name: node
-    image: node:lts-stretch
-    command:
-    - cat
-    tty: true
-    imagePullPolicy: IfNotPresent
-    resources:
-      limits:
-        cpu: "1"
-        memory: "8Gi"
-      requests:
-        cpu: "1"
-        memory: "4Gi"
-"""
+      containerTemplate {
+        name 'node'
+        image 'node:lts'
+        ttyEnabled true
+        command 'cat'
+      }
     }
   }
   stages {
