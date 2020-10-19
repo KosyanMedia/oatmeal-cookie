@@ -1,7 +1,9 @@
+def job_name = env.JOB_NAME.split('/')[0]
+
 pipeline {
   agent {
     kubernetes {
-      label "oatmeal-cookie"
+      label "build-${job_name}"
       defaultContainer 'node'
       containerTemplate {
         name 'node'
