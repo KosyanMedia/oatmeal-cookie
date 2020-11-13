@@ -1,4 +1,4 @@
-declare module "oatmeal-cookie" {
+declare module "@aviasales/cookie" {
   type Converter<T> = (decoded: string) => T;
 
   type CookieOptions = {
